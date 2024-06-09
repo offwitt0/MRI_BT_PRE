@@ -43,7 +43,19 @@ class SEBlock(Layer):
         return input_shape
 
 # Load the model
-model = load_model("CNN&SE&LSTM.h5", custom_objects={'f1_score': f1_score, 'SEBlock': SEBlock})
+model_path = "CNN&SE&LSTM.h5"
+try:
+    if os.path.exists(model_path):
+        st.write(f"Model file found at: {model_path}")
+        model = load_model(model_path, custom_objects={'f1_score': f1_score, 'SEBlock': SEBlock})
+        st.write("Model loaded successfully!")
+    else:
+        st.error(f"Model file not found at: {model_path}")
+        st.stop()
+except Exception as e:
+    st.error(f"Error loading model: {str(e)}")
+    st.stop()
+# model = load_model("CNN&SE&LSTM.h5", custom_objects={'f1_score': f1_score, 'SEBlock': SEBlock})
     
 def makepredictions(img):
     img_d = img.resize((256, 256))  # Resize the image to match the model input shape
