@@ -43,7 +43,7 @@ class SEBlock(Layer):
         return input_shape
 
 # Load the model
-file = "offwitt0/MRI_BT_PRE/blob/main/CNN%26SE%26LSTM.h5"
+file = "CNN%26SE%26LSTM.h5"
 model = load_model(file, custom_objects={'f1_score': f1_score, 'SEBlock': SEBlock})
     
 def makepredictions(img):
