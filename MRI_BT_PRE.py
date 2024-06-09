@@ -43,7 +43,7 @@ class SEBlock(Layer):
         return input_shape
 
 # Load the model
-model_path = "CNN&SE&LSTM.h5"
+model_path = "https://github.com/offwitt0/MRI_BT_PRE/blob/main/CNN%26SE%26LSTM.h5"
 if os.path.exists(model_path):
     st.write(f"Model file found at: {model_path}")
     model = load_model(model_path, custom_objects={'f1_score': f1_score, 'SEBlock': SEBlock})
